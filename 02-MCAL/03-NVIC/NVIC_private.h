@@ -7,22 +7,22 @@
 #define _NVIC_PRIVATE_H
 
 
-#define NVIC_ISER0 		*((u32*)0xE000E100) // Enable External interrupts from 0 to 31
-#define NVIC_ISER1 		*((u32*)0xE000E104) // Enable External interrupts from 32 to 63
+#define NVIC_ISER0 		*((volatile u32*)0xE000E100) // Enable External interrupts from 0 to 31
+#define NVIC_ISER1 		*((volatile u32*)0xE000E104) // Enable External interrupts from 32 to 63
 
-#define NVIC_ICER0		*((u32*)0xE000E180) // Disable External interrupts from 0 to 31
-#define NVIC_ICER1 		*((u32*)0xE000E184) // Disable External interrupts from 32 to 63
+#define NVIC_ICER0		*((volatile u32*)0xE000E180) // Disable External interrupts from 0 to 31
+#define NVIC_ICER1 		*((volatile u32*)0xE000E184) // Disable External interrupts from 32 to 63
 
-#define NVIC_ISPR0		*((u32*)0xE000E200) // Changes interrupt state to pending from 0 to 31
-#define NVIC_ISPR1 		*((u32*)0xE000E204) // Changes interrupt state to pending from 32 to 63
+#define NVIC_ISPR0		*((volatile u32*)0xE000E200) // Changes interrupt state to pending from 0 to 31
+#define NVIC_ISPR1 		*((volatile u32*)0xE000E204) // Changes interrupt state to pending from 32 to 63
 
-#define NVIC_ICPR0		*((u32*)0xE000E280) // Removes the pending state of an interrupt from 0 to 31
-#define NVIC_ICPR1 		*((u32*)0xE000E284) // Removes the pending state of an interrupt from 32 to 63
+#define NVIC_ICPR0		*((volatile u32*)0xE000E280) // Removes the pending state of an interrupt from 0 to 31
+#define NVIC_ICPR1 		*((volatile u32*)0xE000E284) // Removes the pending state of an interrupt from 32 to 63
 
 #define NVIC_IABR0 		*((volatile u32*)0xE000E300) // corresponding interrupt is active or active and pending => 1, Interrupt not active => 0
 #define NVIC_IABR1 		*((volatile u32*)0xE000E304) // corresponding interrupt is active or active and pending => 1, Interrupt not active => 0
 
-#define NVIC_IPR		((u8*)0xE000E400)
+#define NVIC_IPR		((volatile u8*)0xE000E400)
 
 
 /* in (SCB => AIRCR) 4 bits for group and 0 sub => 4bits in (IPR) to determine group number	*/
