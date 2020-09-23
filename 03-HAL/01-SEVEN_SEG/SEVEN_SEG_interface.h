@@ -1,6 +1,6 @@
 /*************************************************/
-/* Author    : Assem Khaled					*/
-/* Version   : V01							*/
+/* Author    : Assem Khaled						*/
+/* Version   : V02								*/
 /* Date      : 15 Aug 2020						*/
 /*************************************************/
 #ifndef _SEVEN_SEG_INTERFACE_H
@@ -22,7 +22,7 @@
 
 void SEVENSEG_voidInit();
 void SEVENSEG_voidDisplay(u8 copy_u8Number);
-void SEVENSEG_voidCount(u8 copy_u8Time);
+void SEVENSEG_voidCount(u32 copy_u32Time);
 
 
 #endif

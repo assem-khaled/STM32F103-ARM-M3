@@ -1,12 +1,13 @@
 /*************************************************/
 /* Author    : Assem Khaled					*/
-/* Version   : V01							*/
+/* Version   : V02							*/
 /* Date      : 15 Aug 2020						*/
 /*************************************************/
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 
 #include "DIO_interface.h"
+#include "STK_interface.h"
 #include "SEVEN_SEG_interface.h"
 
 
@@ -39,7 +40,7 @@ void SEVENSEG_voidDisplay(u8 copy_u8Number)
 	MGPIO_voidSetPinValue(GPIOA, PIN7, GET_BIT(copy_u8Number,7));
 }
 
-void SEVENSEG_voidCount(u8 copy_u8Time)
+void SEVENSEG_voidCount(u32 copy_u32Time)
 {
 	u8 i ;
 	
@@ -49,12 +50,10 @@ void SEVENSEG_voidCount(u8 copy_u8Time)
 	{
 		SEVENSEG_voidDisplay(Numbers[i]);
 		/* Delay */
-		u16 w = 500;
-		for (u16 k = 0; k < w; k++) {
-			for (u16 j = 0; j < w; j++) {
-				asm("NOP");
-			}
-		}
+		
+		/* SysTick Initialization */
+		MSTK_voidInit();
+		MSTK_voidSetBusyWait(copy_u32Time); /* BusyWait */
 	}
 	
 }
