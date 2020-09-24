@@ -11,6 +11,7 @@
 #define	MRCC_APB2	2
 
 /* PORTS */
+#define MRCC_AFIO	0
 #define MRCC_PORTA	2
 #define MRCC_PORTB	3
 #define MRCC_PORTC	4
