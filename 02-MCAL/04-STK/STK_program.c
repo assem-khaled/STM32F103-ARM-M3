@@ -70,7 +70,7 @@ void MSTK_voidSetIntervalPeriodic(u32 Copy_u32Ticks, void (*Copy_ptr)(void) )
 	SET_BIT(MSTK->CTRL, 0);
 	/* Save CallBack */
 	MSTK_CallBack = Copy_ptr;
-	/* Set Mode to Single */
+	/* Set Mode to Periodic */
 	MSTK_u8ModeOfInterval = MSTK_PERIOD_INTERVAL;
 }
 
