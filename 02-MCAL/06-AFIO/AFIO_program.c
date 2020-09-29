@@ -40,7 +40,7 @@ void MAFIO_voidSetEXTIConfig(u8 Copy_u8Line, u8 Copy_u8PortMap)
 		Local_u8RegIndex = 3;
 		Copy_u8Line -= 12;
 	}
-	volatile u32 x =  (AFIO->EXTICR[Local_u8RegIndex]);
+
 	AFIO->EXTICR[Local_u8RegIndex] &= ~((0b1111) << (Copy_u8Line * 4)); // Clear
 	AFIO->EXTICR[Local_u8RegIndex]  |= ((Copy_u8PortMap) << (Copy_u8Line * 4));	// Set
 }
