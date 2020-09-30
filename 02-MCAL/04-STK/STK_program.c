@@ -1,8 +1,8 @@
-/*************************************************/
-/* Author    : Assem Khaled					*/
-/* Version   : V01							*/
-/* Date      : 26  Aug 2020					*/
-/*************************************************/
+/************************************************/
+/* Author    : Assem Khaled						*/
+/* Version   : V02								*/
+/* Date      : 26  Aug 2020						*/
+/************************************************/
 #include "STD_TYPES.h"
 #include "BIT_MATH.h"
 
@@ -48,6 +48,10 @@ void MSTK_voidSetBusyWait(u32 Copy_u32Ticks)
 
 void MSTK_voidSetIntervalSingle(u32 Copy_u32Ticks, void (*Copy_ptr)(void) )
 {
+	/* Disable Timer */
+	CLR_BIT(MSTK->CTRL, 0);
+	MSTK -> VAL = 0;
+
 	/* Load ticks to load register */
 	MSTK->LOAD = Copy_u32Ticks;
 	/* SysTick exception request enable */
