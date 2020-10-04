@@ -1,6 +1,6 @@
 /************************************************/
 /* Author    : Assem Khaled					*/
-/* Version   : V01							*/
+/* Version   : V02							*/
 /* Date      : 31  Aug 2020					*/
 /************************************************/
 #ifndef LEDMRX_CONFIG_H
@@ -26,5 +26,21 @@
 #define	LEDMRX_C5_PIN	GPIOB,PIN10
 #define	LEDMRX_C6_PIN	GPIOB,PIN9
 #define	LEDMRX_C7_PIN	GPIOB,PIN8
+
+
+/* Options:	LEDMRX_PERIODIC
+			LEDMRX_BUSY_WAIT
+			LEDMRX_NOP			*/
+#define LEDMRX_DISPLAY_DELAY			LEDMRX_NOP
+
+/* Options:	LEDMRX_BUSY_WAIT
+			LEDMRX_NOP			*/
+#define LEDMRX_SHIFT_ANIMATION_DELAY	LEDMRX_NOP
+
+/* Options:	HLEDMRX_SHIFT_SPEED_LOW
+ *			HLEDMRX_SHIFT_SPEED_MEDIUM
+ *			HLEDMRX_SHIFT_SPEED_HIGH		*/
+#define LEDMRX_SHIFT_SPEED				HLEDMRX_SHIFT_SPEED_MEDIUM
+
 
 #endif
