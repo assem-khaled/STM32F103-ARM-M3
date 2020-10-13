@@ -1,6 +1,6 @@
 /************************************************/
 /* Author    : Assem Khaled						*/
-/* Version   : V02								*/
+/* Version   : V03								*/
 /* Date      : 19 Aug 2020						*/
 /************************************************/
 #ifndef _NVIC_INTERFACE_H
@@ -19,13 +19,21 @@ void MNVIC_voidInit(void);
 
 
 /* Interrupt Vector table */
-#define MNVIC_INT_EXTI0			6
-#define MNVIC_INT_EXTI1			7
-#define MNVIC_INT_EXTI2			8
-#define MNVIC_INT_EXTI3			9
-#define MNVIC_INT_EXTI4			10
-#define MNVIC_INT_EXTI9_5		23
-#define MNVIC_INT_EXTI15_10		40
+#define MNVIC_INT_EXTI0					6
+#define MNVIC_INT_EXTI1					7
+#define MNVIC_INT_EXTI2					8
+#define MNVIC_INT_EXTI3					9
+#define MNVIC_INT_EXTI4					10
+#define MNVIC_INT_EXTI9_5				23
+#define MNVIC_INT_EXTI15_10				40
+#define MNVIC_INT_DMA1_Channel1			11
+#define MNVIC_INT_DMA1_Channel2			12
+#define MNVIC_INT_DMA1_Channel3			13
+#define MNVIC_INT_DMA1_Channel4			14
+#define MNVIC_INT_DMA1_Channel5			15
+#define MNVIC_INT_DMA1_Channel6			16
+#define MNVIC_INT_DMA1_Channel7			17
+
 
 
 #endif
