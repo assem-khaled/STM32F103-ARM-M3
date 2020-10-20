@@ -1,6 +1,6 @@
 /************************************************/
 /* Author    : Assem Khaled						*/
-/* Version   : V01								*/
+/* Version   : V02								*/
 /* Date      : 21 Sep 2020						*/
 /************************************************/
 #include "STD_TYPES.h"
@@ -47,9 +47,41 @@ void HTFT_voidInitialize(void)
 	voidWriteCommand(0x29);
 }
 
-void HTFT_voidDisplayImage(const u16* Copy_Image)
+void HTFT_voidDisplayImage(const u16* Copy_u16Image)
 {
-	u16 Local_counter;
+	u16 Local_u16Counter;
+	u16 Local_u16Size = TFT_MAX_X * TFT_MAX_Y;
+
+	/* Set X Address */
+	voidWriteCommand(0x2A);
+	voidWriteData(0);
+	voidWriteData(0);
+	voidWriteData(0);
+	voidWriteData(TFT_MAX_X);
+	
+	/* Set Y Address */
+	voidWriteCommand(0x2B);
+	voidWriteData(0);
+	voidWriteData(0);
+	voidWriteData(0);
+	voidWriteData(TFT_MAX_Y);
+
+	/* RAM Write */
+	voidWriteCommand(0x2C);
+
+	for(Local_u16Counter = 0; Local_u16Counter< Local_u16Size; Local_u16Counter++)
+	{
+		/* Write the high byte */
+		voidWriteData( (Copy_u16Image[Local_u16Counter] >> 8) );
+
+		/* Write the low byte */
+		voidWriteData((Copy_u16Image[Local_u16Counter] & 0x00ff));
+	}
+}
+
+void HTFT_voidFillColor(u16 Copy_u16Color)
+{
+	u16 Local_u16Counter;
 
 	/* Set X Address */
 	voidWriteCommand(0x2A);
@@ -57,7 +89,7 @@ void HTFT_voidDisplayImage(const u16* Copy_Image)
 	voidWriteData(0);
 	voidWriteData(0);
 	voidWriteData(127);
-	
+
 	/* Set Y Address */
 	voidWriteCommand(0x2B);
 	voidWriteData(0);
@@ -68,16 +100,47 @@ void HTFT_voidDisplayImage(const u16* Copy_Image)
 	/* RAM Write */
 	voidWriteCommand(0x2C);
 
-	for(Local_counter = 0; Local_counter< 20480; Local_counter++)
+	for(Local_u16Counter = 0; Local_u16Counter< 20480; Local_u16Counter++)
 	{
 		/* Write the high byte */
-		voidWriteData( (Copy_Image[Local_counter] >> 8) );
+		voidWriteData( (Copy_u16Color >> 8) );
 
 		/* Write the low byte */
-		voidWriteData((Copy_Image[Local_counter] & 0x00ff));
+		voidWriteData((Copy_u16Color & 0x00ff));
 	}
 }
 
+void HTFT_voidDrawRect(u8 Copy_u8x1, u8 Copy_u8x2, u8 Copy_u8y1, u8 Copy_u8y2, u16 Copy_u16Color)
+{
+	u16 Local_u16Counter;
+	u16 Local_u16Size = (Copy_u8x2 - Copy_u8x1) * (Copy_u8y2 - Copy_u8y1);
+
+	/* Set X Address */
+	voidWriteCommand(0x2A);
+	voidWriteData(0);
+	voidWriteData(Copy_u8x1);
+	voidWriteData(0);
+	voidWriteData(Copy_u8x2);
+
+	/* Set Y Address */
+	voidWriteCommand(0x2B);
+	voidWriteData(0);
+	voidWriteData(Copy_u8y1);
+	voidWriteData(0);
+	voidWriteData(Copy_u8y2);
+
+	/* RAM Write */
+	voidWriteCommand(0x2C);
+
+	for(Local_u16Counter = 0; Local_u16Counter< Local_u16Size; Local_u16Counter++)
+	{
+		/* Write the high byte */
+		voidWriteData( (Copy_u16Color >> 8) );
+
+		/* Write the low byte */
+		voidWriteData((Copy_u16Color & 0x00ff));
+	}
+}
 
 
 static void voidWriteCommand(u8 Copy_u8Command)
